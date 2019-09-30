@@ -7,6 +7,8 @@ import useForm from "react-hook-form";
 
 const FormHolder = styled.div`
   margin: 35px 0;
+  display: flex;
+  justify-content: center;
 `;
 
 const Form = styled.form`
@@ -15,8 +17,25 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
+  margin: 35px 15px;
+  padding: 15px 25px;
+  background: dodgerblue;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 1.25rem;
+  ::placeholder {
+    color: white;
+  }
+`;
+const SubmitButton = styled.button`
   margin: 35px;
   padding: 15px 25px;
+  background: dodgerblue;
+  border-radius: 15px;
+  border: 2px solid black;
+  font-size: 1.25rem;
+  color: white;
 `;
 
 const SmurfForm = ({ getSmurf, addSmurf, smurfs, isFetching, error }) => {
@@ -63,7 +82,7 @@ const SmurfForm = ({ getSmurf, addSmurf, smurfs, isFetching, error }) => {
         />
         {errors.height && errors.height.message}
 
-        <button>Submit</button>
+        <SubmitButton>Submit</SubmitButton>
       </Form>
     </FormHolder>
   );

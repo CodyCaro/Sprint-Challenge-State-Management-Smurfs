@@ -16,7 +16,7 @@ const SmurfCard = styled.div`
   align-items: center;
   flex-direction: column;
   border: solid 1px dodgerblue;
-  margin: 10px 8%;
+  margin: 10px 5%;
   width: 10%;
   img {
     width: 100%;
