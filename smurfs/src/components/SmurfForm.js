@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getSmurf } from "../actions";
+import { getSmurf, addSmurf } from "../actions";
 
-const SmurfForm = ({ getSmurf, smurfs, isFetching, error }) => {
+const SmurfForm = ({ getSmurf, addSmurf, smurfs, isFetching, error }) => {
   useEffect(() => {
     // run action creator when the component mounts
     getSmurf();
+    addSmurf({ name: "Working", age: 5, height: "5cm" });
   }, [getSmurf]);
 
   console.log(smurfs);
 
   if (isFetching) {
-    return <h3>Fetching quote for ya!</h3>;
+    return <h3>Fetching smurfs!</h3>;
   }
 
   return <div></div>;
@@ -27,5 +28,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurf }
+  { getSmurf, addSmurf }
 )(SmurfForm);
