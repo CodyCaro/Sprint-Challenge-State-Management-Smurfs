@@ -4,6 +4,7 @@ export const FETCHING_SMURFS_START = "FETCHING_SMURFS_START";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
 export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
 export const ADD_SMURF = "ADD_SMURF";
+
 export const getSmurf = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS_START });
   axios
@@ -16,6 +17,7 @@ export const getSmurf = () => dispatch => {
       dispatch({ type: FETCHING_SMURFS_FAILURE, payload: err.data });
     });
 };
+
 export const addSmurf = smurfToAdd => dispatch => {
   dispatch({ type: FETCHING_SMURFS_START });
   axios

@@ -1,18 +1,33 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
+
 import { connect } from "react-redux";
 import { getSmurf, addSmurf } from "../actions";
 import useForm from "react-hook-form";
 
+const FormHolder = styled.div`
+  margin: 35px 0;
+`;
+
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+`;
+
+const Input = styled.input`
+  margin: 35px;
+  padding: 15px 25px;
+`;
+
 const SmurfForm = ({ getSmurf, addSmurf, smurfs, isFetching, error }) => {
   useEffect(() => {
-    // run action creator when the component mounts
     getSmurf();
-  }, [getSmurf]);
+  }, []);
 
   const { handleSubmit, register, errors } = useForm();
   const onSubmit = values => {
-    console.log(values);
     addSmurf(values);
+    getSmurf();
   };
 
   if (isFetching) {
@@ -20,34 +35,37 @@ const SmurfForm = ({ getSmurf, addSmurf, smurfs, isFetching, error }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
+    <FormHolder>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
           name="name"
+          placeholder="Smurfs Name"
           ref={register({
             required: "Required"
           })}
         />
         {errors.name && errors.name.message}
 
-        <input
+        <Input
           name="age"
+          placeholder="Smurfs Age"
           ref={register({
             required: "Required"
           })}
         />
         {errors.age && errors.age.message}
-        <input
+        <Input
           name="height"
+          placeholder="Smurfs Height"
           ref={register({
             required: "Required"
           })}
         />
         {errors.height && errors.height.message}
 
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+        <button>Submit</button>
+      </Form>
+    </FormHolder>
   );
 };
 

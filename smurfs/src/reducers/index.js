@@ -20,6 +20,8 @@ export const reducer = (state = initialState, action) => {
         error: ""
       };
     case FETCHING_SMURFS_SUCCESS:
+      console.log(state.smurfs);
+
       return {
         ...state,
         isFetching: false,
@@ -28,14 +30,7 @@ export const reducer = (state = initialState, action) => {
     case ADD_SMURF:
       return {
         ...state,
-        smurfs: [
-          ...state.smurfs,
-          {
-            name: action.payload.name,
-            age: action.payload.age,
-            height: action.payload.height
-          }
-        ]
+        smurfs: [...state.smurfs, action.payload]
       };
     default:
       return state;
